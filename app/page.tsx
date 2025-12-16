@@ -1,65 +1,141 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, CheckCircle2, Sparkles, Upload } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex min-h-screen flex-col bg-background selection:bg-primary/10 selection:text-primary">
+      {/* Navbar */}
+      <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-16 items-center justify-between px-4 sm:px-8">
+          <div className="flex items-center gap-2">
+            {/* Logo Placeholder */}
+            <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center">
+              <Sparkles className="h-4 w-4 text-primary" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-foreground/90">SkillSync AI</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
+            <a href="#features" className="hover:text-primary transition-colors">Features</a>
+            <a href="#how-it-works" className="hover:text-primary transition-colors">How it Works</a>
+          </nav>
+          <Link href="/editor">
+            <Button size="sm" className="font-semibold shadow-lg shadow-primary/20">Start Free</Button>
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden py-24 sm:py-32">
+          <div className="container px-4 sm:px-8 text-center">
+            <div className="mx-auto max-w-3xl">
+              <div className="mb-8 flex justify-center">
+                <div className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  v1.0 Public Beta
+                </div>
+              </div>
+              <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/60">
+                Tailor your resume to any job in seconds with AI.
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
+                Paste your job description and instantly see what your resume is missing.
+                Optimized bullets, keyword matching, and real-time scoring.
+              </p>
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <Link href="/editor">
+                  <Button size="lg" className="h-12 px-8 text-base shadow-xl shadow-primary/20">
+                    Start Optimizing <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Button size="lg" variant="outline" className="h-12 px-8 text-base">
+                  View Demo
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Feature Highlights Mockup - Placeholder using Grid */}
+        <section id="features" className="py-24 bg-muted/30 border-y border-border/50">
+          <div className="container px-4 sm:px-8">
+            <div className="mx-auto max-w-4xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Everything you need to land the interview</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="p-8 rounded-2xl bg-card border border-border/50 hover:shadow-lg transition-all duration-300">
+                <div className="h-12 w-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
+                  <CheckCircle2 className="h-6 w-6 text-blue-500" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Real-Time Scoring</h3>
+                <p className="text-muted-foreground">See how well your resume matches the job description instantly as you type.</p>
+              </div>
+              <div className="p-8 rounded-2xl bg-card border border-border/50 hover:shadow-lg transition-all duration-300">
+                <div className="h-12 w-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6">
+                  <Sparkles className="h-6 w-6 text-purple-500" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">AI Bullet Suggestions</h3>
+                <p className="text-muted-foreground">Get tailored bullet points generated by AI based on missing skills.</p>
+              </div>
+              <div className="p-8 rounded-2xl bg-card border border-border/50 hover:shadow-lg transition-all duration-300">
+                <div className="h-12 w-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6">
+                  <Upload className="h-6 w-6 text-emerald-500" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Privacy First</h3>
+                <p className="text-muted-foreground">Your data stays local. We don't store your resume unless you want us to.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it Works Section */}
+        <section id="how-it-works" className="py-24 bg-background">
+          <div className="container px-4 sm:px-8">
+            <div className="mx-auto max-w-3xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Three steps to your dream job
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+              {/* Connecting Line (Desktop) */}
+              <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-border via-primary/50 to-border -z-10" />
+
+              {/* Step 1 */}
+              <div className="flex flex-col items-center text-center group">
+                <div className="w-24 h-24 rounded-2xl bg-card border-2 border-border shadow-sm flex items-center justify-center mb-6 group-hover:border-primary/50 group-hover:shadow-primary/10 transition-all">
+                  <span className="text-3xl font-bold text-muted-foreground/50 group-hover:text-primary transition-colors">1</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Paste Job Description</h3>
+                <p className="text-muted-foreground">Copy the JD from LinkedIn or Indeed and let our AI analyze the key requirements.</p>
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex flex-col items-center text-center group">
+                <div className="w-24 h-24 rounded-2xl bg-card border-2 border-border shadow-sm flex items-center justify-center mb-6 group-hover:border-primary/50 group-hover:shadow-primary/10 transition-all">
+                  <span className="text-3xl font-bold text-muted-foreground/50 group-hover:text-primary transition-colors">2</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Build or Upload</h3>
+                <p className="text-muted-foreground">Create your resume in our editor or upload an existing JSON resume.</p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex flex-col items-center text-center group">
+                <div className="w-24 h-24 rounded-2xl bg-card border-2 border-border shadow-sm flex items-center justify-center mb-6 group-hover:border-primary/50 group-hover:shadow-primary/10 transition-all">
+                  <span className="text-3xl font-bold text-muted-foreground/50 group-hover:text-primary transition-colors">3</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Tailor & Export</h3>
+                <p className="text-muted-foreground">Use AI suggestions to fill gaps, match keywords, and export as PDF.</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <footer className="border-t border-border/40 py-12 bg-muted/10">
+        <div className="container px-4 sm:px-8 text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} SkillSync AI. No emojis were used in the making of this site.</p>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -30,8 +30,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (secrets - DO NOT COMMIT)
+# This includes .env.local, .env.development.local, etc.
+# These contain your OpenAI API keys.
 .env*
+!.env.example
 
 # vercel
 .vercel
