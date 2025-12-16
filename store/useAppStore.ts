@@ -128,7 +128,8 @@ export const useAppStore = create<AppState>()(
                             font: 'inter',
                             accentColor: '#000000',
                             spacing: 1.0,
-                            margins: 20
+                            margins: 20,
+                            entryLayout: 'right'
                         };
                     }
                     if (state.savedResumes) {
