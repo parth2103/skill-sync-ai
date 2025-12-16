@@ -5,6 +5,7 @@ export interface MatchResult {
     matchedKeywords: string[];
     missingKeywords: string[];
     allKeywords: string[];
+    feedback?: string;
 }
 
 /**
