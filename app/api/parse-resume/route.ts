@@ -1,7 +1,8 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-import pdf from "pdf-parse";
+// @ts-ignore
+import pdf from "pdf-parse/lib/pdf-parse.js";
 
 // 1. Initialize OpenAI
 const openai = new OpenAI({
