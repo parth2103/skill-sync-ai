@@ -7,7 +7,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background selection:bg-primary/10 selection:text-primary">
       {/* Navbar */}
       <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between px-4 sm:px-8">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-8">
           <div className="flex items-center gap-2">
             {/* Logo Placeholder */}
             <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center">
@@ -28,7 +28,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative overflow-hidden py-24 sm:py-32">
-          <div className="container px-4 sm:px-8 text-center">
+          <div className="container mx-auto px-4 sm:px-8 text-center">
             <div className="mx-auto max-w-3xl">
               <div className="mb-8 flex justify-center">
                 <div className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
@@ -58,7 +58,7 @@ export default function Home() {
 
         {/* Feature Highlights Mockup - Placeholder using Grid */}
         <section id="features" className="py-24 bg-muted/30 border-y border-border/50">
-          <div className="container px-4 sm:px-8">
+          <div className="container mx-auto px-4 sm:px-8">
             <div className="mx-auto max-w-4xl text-center mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Everything you need to land the interview</h2>
             </div>
@@ -90,7 +90,7 @@ export default function Home() {
 
         {/* How it Works Section */}
         <section id="how-it-works" className="py-24 bg-background">
-          <div className="container px-4 sm:px-8">
+          <div className="container mx-auto px-4 sm:px-8">
             <div className="mx-auto max-w-3xl text-center mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                 Three steps to your dream job
@@ -132,7 +132,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-border/40 py-12 bg-muted/10">
-        <div className="container px-4 sm:px-8 text-center text-sm text-muted-foreground">
+        <div className="container mx-auto px-4 sm:px-8 text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} SkillSync AI. No emojis were used in the making of this site.</p>
         </div>
       </footer>

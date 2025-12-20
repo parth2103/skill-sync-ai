@@ -11,9 +11,54 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useAppStore } from "@/store/useAppStore";
 
+import { useRef } from "react";
 export default function EditorPage() {
-    const currentResume = useAppStore((state) => state.currentResume);
+    const { currentResume, setResume } = useAppStore();
     const [activeTab, setActiveTab] = useState<'content' | 'design' | 'match'>('content');
+    const [isImporting, setIsImporting] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleImportClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setIsImporting(true);
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const response = await fetch("/api/parse-resume", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!response.ok) throw new Error("Failed to parse resume");
+
+            const { data } = await response.json();
+
+            // Merge parsed data with current ID and timestamps
+            // We keep the current ID to avoid navigation issues, or generate a new one
+            const newResume = {
+                ...currentResume,
+                ...data, // Overwrite with parsed data
+                id: currentResume!.id,
+                updatedAt: Date.now()
+            };
+
+            setResume(newResume);
+            alert("Resume imported successfully!");
+        } catch (error) {
+            console.error(error);
+            alert("Failed to import resume. Please try again.");
+        } finally {
+            setIsImporting(false);
+            if (fileInputRef.current) fileInputRef.current.value = "";
+        }
+    };
 
     if (!currentResume) {
         return <div className="p-10 flex items-center justify-center">Loading...</div>;
@@ -30,6 +75,21 @@ export default function EditorPage() {
                     <h1 className="font-semibold text-sm sm:text-base truncate max-w-[200px]">{currentResume.title}</h1>
                 </div>
                 <div className="flex items-center gap-2">
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        className="hidden"
+                        accept=".pdf"
+                        onChange={handleFileChange}
+                    />
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={handleImportClick}
+                        disabled={isImporting}
+                    >
+                        {isImporting ? "Parsing..." : "Import PDF"}
+                    </Button>
                     <Button variant="outline" size="sm">Download PDF</Button>
                     <Button size="sm">Save</Button>
                 </div>
